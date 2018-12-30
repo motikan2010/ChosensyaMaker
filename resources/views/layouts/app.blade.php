@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laravel</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <strong>『挑戦者が現れました』メーカー</strong>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      @yield('content')
+    </div>
+  </section>
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p>&copy; @motikan2010</p>
+  </div>
+</footer>
+<script type="text/javascript" src="/js/html2canvas.min.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
+</body>
+</html>

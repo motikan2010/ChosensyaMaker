@@ -1,3 +1,15 @@
 #canvas {
-    background-color: #28282f;
+    background: url('/images/chosensya_back.jpg') left top no-repeat;
+    background-size:contain;
+}
+
+.custom-file-input:lang(ja) ~ .custom-file-label::after {
+    content: "参照";
+}
+
+.custom-file {
+    overflow: hidden;
+}
+.custom-file-label {
+    white-space: nowrap;
 }
