@@ -30,16 +30,16 @@ class TopController extends Controller
             ]
         ]);
         if ($request->file('image')->isValid()) {
+            // 画像ファイルの保存 & 背景透過
             $imageFilename = $request->image->store('images/result');
-
             $inputFileFullPath = storage_path() . '/app/' . $imageFilename;
-            $outputFileFullPath = public_path() . '/' . $imageFilename . '.png';
+            $now = new \DateTime();
+            $outputFileFullPath = public_path() . '/' . $imageFilename . '.' . $now->format('YmdHis') . '.png';
             $convertLibDir = app_path() . '/Lib/image-background-removal/';
             $convertLibName = 'seg.py';
-
-            $convertCommand = "python {$convertLibDir}{$convertLibName} {$inputFileFullPath} {$outputFileFullPath}";
+            $convertCommand = "python {$convertLibDir}{$convertLibName} {$inputFileFullPath} {$outputFileFullPath}"; // 背景透過コマンド
             Log::info($convertCommand);
-            exec("cd {$convertLibDir} && $convertCommand");
+            exec("cd {$convertLibDir} && $convertCommand"); // 背景透過処理の実行
 
             return view('top.create')->with([
                 'imageUrl' => basename($outputFileFullPath),

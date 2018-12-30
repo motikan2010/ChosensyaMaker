@@ -11,6 +11,7 @@ function init(window) {
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');
 
+  var scale = 1;
 
   const img = new Image();
   img.src = '/images/result/' + imageUrl;
@@ -37,7 +38,10 @@ function init(window) {
 
   const redraw = function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, diff.x, diff.y)
+
+    ctx.scale(scale, scale);
+    ctx.drawImage(img, diff.x, diff.y);
+    ctx.scale(1 / scale, 1 / scale);
   };
 
   canvas.addEventListener('mousedown', function(event) {
@@ -45,6 +49,7 @@ function init(window) {
     start.x = event.clientX;
     start.y = event.clientY;
   });
+
   canvas.addEventListener('mousemove', function(event) {
     if (isDragging) {
       diff.x = (event.clientX - start.x) + end.x;
@@ -52,11 +57,27 @@ function init(window) {
       redraw();
     }
   });
-  canvas.addEventListener('mouseup', function(event) {
+
+  canvas.addEventListener('mouseup', function() {
     isDragging = false;
     end.x = diff.x;
     end.y = diff.y;
   });
+
+  // 縮小・拡大
+  const slider = document.getElementById('zoom-slider');
+  slider.value = scale;
+  slider.min = 0.01;
+  slider.max = 2;
+  slider.step = 'any';
+  slider.addEventListener('input', function(e) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    scale = e.target.value;
+    ctx.scale(scale, scale);
+    ctx.drawImage(img, diff.x, diff.y);
+    ctx.scale(1 / scale, 1 / scale);
+  });
+
 }
 
 function take() {

@@ -36,7 +36,6 @@
     <p>&copy; @motikan2010</p>
   </div>
 </footer>
-<script type="text/javascript" src="/js/html2canvas.min.js"></script>
-<script type="text/javascript" src="/js/app.js"></script>
+@yield('javascript')
 </body>
 </html>

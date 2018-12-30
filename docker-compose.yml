@@ -5,6 +5,5 @@ services:
     build: "."
     ports:
       - "8000:8000"
-    command: sleep 10000
     volumes:
       - "./:/opt/ChosensyaMaker"

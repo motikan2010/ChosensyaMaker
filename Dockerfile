@@ -9,3 +9,7 @@ RUN \
 
 RUN \
   pip3 install numpy pillow tensorflow
+
+WORKDIR /opt/ChosensyaMaker/
+
+ENTRYPOINT ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
