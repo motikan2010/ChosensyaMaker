@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="row">
-    <div class="col-md-4 offset-md-4">
+    <div class="col-md-6 offset-md-3">
       {!! Form::open(['url' => '/create', 'method' => 'post', 'files' => true]) !!}
       @if ($errors->any())
         <div class="alert alert-danger">

@@ -95,7 +95,27 @@ function take() {
     var output = document.getElementById('output');
     output.textContent = null;
     output.appendChild(canvas);
+
+    // ダウンロードボタン
+    var downloadBtn = document.getElementById('download-button');
+    downloadBtn.disabled = false;
+    var download = document.getElementById('download');
+    var imgData = canvas.toDataURL();
+    download.src = imgData;
+    download.href = imgData;
+
+    var now = new Date();
+    const padZero = function (num){
+      var result;
+      if (num < 10) {
+        result = "0" + num;
+      } else {
+        result = "" + num;
+      }
+      return result;
+    };
+    var date = '' + now.getFullYear() + padZero(now.getMonth() + 1) + padZero(now.getDate()) + '_' +
+        padZero(now.getHours()) + padZero(now.getMinutes()) + padZero(now.getSeconds());
+    download.download = 'chosensya_' + date + '.png';
   });
 }
-
-
