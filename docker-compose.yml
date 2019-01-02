@@ -6,4 +6,6 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - "./:/opt/ChosensyaMaker"
+      - ./app/:/opt/ChosensyaMaker/app
+      - ./public/:/opt/ChosensyaMaker/public
+      - ./resources/:/opt/ChosensyaMaker/resources
