@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="『挑戦者が現れました』メーカー">
+  <meta name="keywords" content="挑戦者が現れました,メーカー,ジェネレーター">
   <title>『挑戦者が現れました』メーカー</title>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/app.css">
@@ -16,7 +18,7 @@
   </div>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container d-flex justify-content-between">
-      <a href="#" class="navbar-brand d-flex align-items-center">
+      <a href="/" class="navbar-brand d-flex align-items-center">
         <strong>『挑戦者が現れました』メーカー</strong>
       </a>
     </div>
