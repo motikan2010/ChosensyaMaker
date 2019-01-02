@@ -18,12 +18,7 @@ function init(window) {
   img.crossOrigin = 'anonymous';
 
   img.onload = function() {
-    // Canvasを画像のサイズに合わせる
-    // canvas.height = img.height;
-    // canvas.width  = img.width;
-
-    // Canvasに描画する
-    ctx.drawImage(img, 0, 0);
+    ctx.drawImage(img, canvas.width / 10 +  this.width / 2, 0);
   };
 
   img.onerror = function() {
@@ -38,7 +33,6 @@ function init(window) {
 
   const redraw = function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     ctx.scale(scale, scale);
     ctx.drawImage(img, diff.x, diff.y);
     ctx.scale(1 / scale, 1 / scale);
@@ -70,14 +64,30 @@ function init(window) {
   slider.min = 0.01;
   slider.max = 2;
   slider.step = 'any';
-  slider.addEventListener('input', function(e) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    scale = e.target.value;
-    ctx.scale(scale, scale);
-    ctx.drawImage(img, diff.x, diff.y);
-    ctx.scale(1 / scale, 1 / scale);
+  slider.addEventListener('input', function(event) {
+    scale = event.target.value;
+    redraw();
   });
 
+  // シルエットON/OFF
+  const monochromeRadio = document.getElementsByName('monochrome-radio');
+  for(var i = 0; i < monochromeRadio.length; i++) {
+    monochromeRadio[i].addEventListener('change', function (event) {
+      if (event.target.value === '1') {
+        const silhouetteImageData = ctx.getImageData(0, 0, canvas.clientWidth, canvas.clientHeight);
+        const silhouetteData = silhouetteImageData.data;
+        for(var n = 0; n < silhouetteData.length; n += 4){
+          silhouetteData[n] = 10;
+          silhouetteData[n + 1] = 10;
+          silhouetteData[n + 2] = 10;
+        }
+        silhouetteImageData.data.set(silhouetteData);
+        ctx.putImageData(silhouetteImageData, 0, 0);
+      } else {
+        console.log('OFF');
+      }
+    });
+  }
 }
 
 function take() {
@@ -87,3 +97,5 @@ function take() {
     output.appendChild(canvas);
   });
 }
+
+

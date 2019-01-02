@@ -3,8 +3,13 @@
 @section('content')
   <div class="slider">
     <span>縮小</span>
-    <input id="zoom-slider" type="range">
+    <input id="zoom-slider" type="range"/>
     <span>拡大</span>
+  </div>
+  <div class="monochrome">
+    シルエット（β版）
+    <input type="radio" name="monochrome-radio" value="1"/>ON
+    <input type="radio" name="monochrome-radio" value="0" checked="checked"/>OFF
   </div>
   <div id="image-info" url="{{$imageUrl}}"></div>
   <div id="input">
