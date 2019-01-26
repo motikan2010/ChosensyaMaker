@@ -26,7 +26,13 @@ function MyCanvas(image, imageUrl, stageWidth, stageHeight) {
     });
     layer.add(rect);
     
-    var tr = new Konva.Transformer();
+    var tr = new Konva.Transformer({
+        anchorStroke: '#FFBF00',
+        anchorFill: '#F2F2F2',
+        anchorSize: 20,
+        borderStroke: '#F7BE81',
+        borderDash: [3, 3],
+    });
     layer.add(tr);
     tr.attachTo(rect);
     layer.draw();
