@@ -28,14 +28,13 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-md-1">
     <div class="col-md-6 offset-md-3">
       <div class="card">
-        <h5 class="card-header">概要</h5>
-        <div class="card-body">
+        <h5 class="card-header">このサイトについて</h5>
+        <div class="card-body px-sm-1">
           ※人物画像の背景が自動的にトリミングされます。
-          <img class="card-img-top img-thumbnail" src="/images/before.jpg" alt="Before image">
-          <img class="card-img-top img-thumbnail" src="/images/after.png" alt="After image">
+          <img class="card-img-top img-thumbnail" src="/images/site-info.png" alt="">
         </div>
       </div>
     </div>
